@@ -1,5 +1,7 @@
 const router = require('koa-router')()
 
+router.prefix('/api')
+
 router.get('/', async (ctx, next) => {
   await ctx.render('index', {
     title: 'Hello Koa 2!'
@@ -19,7 +21,7 @@ router.get('/json', async (ctx, next) => {
 router.get('/api', async (ctx, next) => {
   console.log(ctx.request.url)
   const data = await getData()
-  ctx.body = { data, code: 0 }
+  ctx.body = { data, code: 0, message: 'success' }
 })
 
 function getData () {
